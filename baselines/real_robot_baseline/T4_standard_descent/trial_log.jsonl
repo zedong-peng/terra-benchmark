@@ -1,0 +1,4 @@
+{"timestamp": 0.0, "event": "trial_start", "task_id": "T4", "trial_id": "real_robot_baseline_T4_trial01"}
+{"timestamp": 3.75, "event": "midcourse_checkpoint", "task_id": "T4", "trial_id": "real_robot_baseline_T4_trial01"}
+{"timestamp": 9.75, "event": "recovery_checkpoint", "task_id": "T4", "trial_id": "real_robot_baseline_T4_trial01"}
+{"timestamp": 15.0, "event": "trial_summary", "task_id": "T4", "trial_id": "real_robot_baseline_T4_trial01", "metrics": {"success": 0.86, "completion_time_s": 15.0, "extra_support_contacts": 1, "recovery_steps": 2, "foot_placement_error_mm": 27, "energy_proxy": 0.66}}

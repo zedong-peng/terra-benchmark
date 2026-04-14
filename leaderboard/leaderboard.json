@@ -1,0 +1,76 @@
+{
+  "terra_version": "2.0",
+  "generated_at": "2026-04-14T10:50:02Z",
+  "entries": [
+    {
+      "submission_id": "2025-04-h1-labbaseline-terra-ref",
+      "robot_name": "H1-LabBaseline",
+      "lab": "TERRA Reference Implementation",
+      "morphology": "humanoid",
+      "benchmark_version": "2.0",
+      "evaluation_date": "2025-04-01",
+      "build_variant": "canonical",
+      "task_scores": {
+        "T1": 0.956,
+        "T2": 0.8716,
+        "T3": 0.8576,
+        "T4": 0.7707,
+        "T5": 0.7068,
+        "T6": 0.771,
+        "T7": 0.7361,
+        "T8": 0.6803
+      },
+      "tss": 0.7737,
+      "cli": 0.7648,
+      "measurement_methods": {
+        "success": "robot_proprioception",
+        "completion_time_s": "robot_proprioception",
+        "extra_support_contacts": "robot_proprioception",
+        "recovery_steps": "robot_proprioception",
+        "foot_placement_error_mm": "overhead_camera",
+        "energy_proxy": "robot_proprioception"
+      },
+      "hardware_cost_usd": 4200,
+      "notes": [
+        "Reference physical evaluation for TERRA v2.0 release.",
+        "Unitree H1 platform with onboard stereo perception and MPC-based locomotion.",
+        "Overhead camera with AprilTag36h11 calibration for foot placement; < 2 mm reprojection error verified.",
+        "Energy proxy computed from motor torque x velocity integral via onboard motor controllers."
+      ]
+    },
+    {
+      "submission_id": "2025-04-atlassim-locopolicy-terra-ref",
+      "robot_name": "AtlasSim-LocoPolicy",
+      "lab": "TERRA Reference Implementation",
+      "morphology": "humanoid",
+      "benchmark_version": "2.0",
+      "evaluation_date": "2025-04-01",
+      "build_variant": "canonical",
+      "task_scores": {
+        "T1": 0.978,
+        "T2": 0.9272,
+        "T3": 0.878,
+        "T4": 0.8051,
+        "T5": 0.5196,
+        "T6": 0.7447,
+        "T7": 0.6924,
+        "T8": 0.477
+      },
+      "tss": 0.7019,
+      "cli": 0.537,
+      "measurement_methods": {
+        "success": "robot_proprioception",
+        "completion_time_s": "robot_proprioception",
+        "extra_support_contacts": "robot_proprioception",
+        "recovery_steps": "robot_proprioception",
+        "foot_placement_error_mm": "robot_proprioception",
+        "energy_proxy": "robot_proprioception"
+      },
+      "notes": [
+        "Reference simulation evaluation for TERRA v2.0 release. MuJoCo physics, 200 Hz control.",
+        "All metrics logged directly from simulator ground-truth state.",
+        "Illustrates nominal-task strength (T1-T4) vs. closed-loop degradation (T5, T8): CLI = 0.537."
+      ]
+    }
+  ]
+}

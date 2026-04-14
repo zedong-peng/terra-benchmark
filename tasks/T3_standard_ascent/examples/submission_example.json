@@ -1,0 +1,20 @@
+{
+  "task_id": "T3",
+  "difficulty_modes": [
+    "canonical",
+    "parametric",
+    "challenge"
+  ],
+  "required_logs": [
+    "run_manifest.json",
+    "trial_log.jsonl"
+  ],
+  "scored_metrics": [
+    "success",
+    "completion_time_s",
+    "extra_support_contacts",
+    "recovery_steps",
+    "foot_placement_error_mm",
+    "energy_proxy"
+  ]
+}

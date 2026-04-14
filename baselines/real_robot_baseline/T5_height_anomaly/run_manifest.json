@@ -1,0 +1,18 @@
+{
+  "robot": {
+    "name": "H1-LabBaseline",
+    "morphology": "humanoid",
+    "height_m": 1.72,
+    "mass_kg": 70.0,
+    "sensors": [
+      "stereo_head_camera",
+      "imu",
+      "joint_encoders",
+      "foot_contact"
+    ],
+    "controller_frequency_hz": 250,
+    "compute": "embedded x86 controller with onboard perception stack"
+  },
+  "benchmark_version": "0.1.0",
+  "notes": "Illustrative baseline with slower motion and stronger disturbance tolerance than the simulation policy."
+}

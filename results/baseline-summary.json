@@ -1,0 +1,86 @@
+{
+  "sim_baseline": [
+    {
+      "task_id": "T1",
+      "task_score": 0.978,
+      "success": 1.0
+    },
+    {
+      "task_id": "T2",
+      "task_score": 0.9272,
+      "success": 0.95
+    },
+    {
+      "task_id": "T3",
+      "task_score": 0.878,
+      "success": 0.92
+    },
+    {
+      "task_id": "T4",
+      "task_score": 0.8051,
+      "success": 0.88
+    },
+    {
+      "task_id": "T5",
+      "task_score": 0.5196,
+      "success": 0.62
+    },
+    {
+      "task_id": "T6",
+      "task_score": 0.7447,
+      "success": 0.81
+    },
+    {
+      "task_id": "T7",
+      "task_score": 0.6924,
+      "success": 0.77
+    },
+    {
+      "task_id": "T8",
+      "task_score": 0.477,
+      "success": 0.58
+    }
+  ],
+  "real_robot_baseline": [
+    {
+      "task_id": "T1",
+      "task_score": 0.956,
+      "success": 0.98
+    },
+    {
+      "task_id": "T2",
+      "task_score": 0.8716,
+      "success": 0.91
+    },
+    {
+      "task_id": "T3",
+      "task_score": 0.8576,
+      "success": 0.9
+    },
+    {
+      "task_id": "T4",
+      "task_score": 0.7707,
+      "success": 0.86
+    },
+    {
+      "task_id": "T5",
+      "task_score": 0.7068,
+      "success": 0.79
+    },
+    {
+      "task_id": "T6",
+      "task_score": 0.771,
+      "success": 0.84
+    },
+    {
+      "task_id": "T7",
+      "task_score": 0.7361,
+      "success": 0.82
+    },
+    {
+      "task_id": "T8",
+      "task_score": 0.6803,
+      "success": 0.76
+    }
+  ]
+}

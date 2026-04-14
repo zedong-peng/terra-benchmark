@@ -1,0 +1,4 @@
+{"timestamp": 0.0, "event": "trial_start", "task_id": "T2", "trial_id": "sim_baseline_T2_trial01"}
+{"timestamp": 1.775, "event": "midcourse_checkpoint", "task_id": "T2", "trial_id": "sim_baseline_T2_trial01"}
+{"timestamp": 4.615, "event": "recovery_checkpoint", "task_id": "T2", "trial_id": "sim_baseline_T2_trial01"}
+{"timestamp": 7.1, "event": "trial_summary", "task_id": "T2", "trial_id": "sim_baseline_T2_trial01", "metrics": {"success": 0.95, "completion_time_s": 7.1, "extra_support_contacts": 0, "recovery_steps": 0, "foot_placement_error_mm": 24, "energy_proxy": 0.48}}

@@ -1,0 +1,26 @@
+{
+  "task_id": "T5",
+  "task_title": "Height Anomaly",
+  "robot_name": "H1-LabBaseline",
+  "morphology_track": "humanoid",
+  "build_variant": "canonical",
+  "trial_dir": "baselines/real_robot_baseline/T5_height_anomaly",
+  "metrics": {
+    "success": 0.79,
+    "completion_time_s": 16.1,
+    "extra_support_contacts": 1,
+    "recovery_steps": 2,
+    "foot_placement_error_mm": 33,
+    "energy_proxy": 0.69
+  },
+  "scoring_coefficients": {
+    "alpha": 0.15,
+    "beta": 0.1,
+    "gamma": 0.05
+  },
+  "task_score": 0.7068,
+  "notes": [
+    "Aggregate score is for summary use only; leaderboard views should preserve raw metrics.",
+    "This is the signature closed-loop task. Reward successful continuation, not just perfect nominal cadence."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["robot", "benchmark_version", "notes"],
+  "properties": {
+    "benchmark_version": { "type": "string" },
+    "notes": { "type": "string" },
+    "robot": {
+      "type": "object",
+      "required": ["name", "morphology", "height_m", "mass_kg", "sensors", "controller_frequency_hz", "compute"],
+      "properties": {
+        "name": { "type": "string" },
+        "morphology": {
+          "type": "string",
+          "enum": ["humanoid", "biped", "quadruped", "wheeled_legged", "other"]
+        },
+        "height_m": { "type": "number", "minimum": 0.2 },
+        "mass_kg": { "type": "number", "minimum": 1.0 },
+        "leg_length_m": {
+          "type": "number",
+          "minimum": 0.1,
+          "description": "Nominal leg length from hip joint to foot sole, used for morphology normalization."
+        },
+        "sensors": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "controller_frequency_hz": { "type": "number", "minimum": 20 },
+        "compute": { "type": "string" },
+        "morphology_normalization": {
+          "type": "object",
+          "description": "Optional fields for cross-morphology score normalization.",
+          "properties": {
+            "nominal_standing_height_m": { "type": "number" },
+            "nominal_pelvis_height_m": { "type": "number" },
+            "effective_foot_width_mm": { "type": "number" },
+            "effective_foot_length_mm": { "type": "number" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

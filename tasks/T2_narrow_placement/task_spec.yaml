@@ -1,0 +1,58 @@
+task_id: T2
+slug: narrow_placement
+title: Narrow Placement
+tier: standard
+terra_version: "2.0"
+morphology_tracks: [humanoid, biped]
+tss_weight: 1.0
+
+purpose: Measure lateral balance and foot placement precision in a constrained stepping
+  corridor.
+dominant_primitive: precise foot placement
+dominant_failure_mode: step placement outside the allowed corridor
+geometry:
+  walkway_length_mm: 3000
+  walkway_width_mm: 600
+  stepping_corridor_width_mm: 220
+tolerances:
+  dimensional_mm: 3
+  lateral_marking_mm: 2
+materials:
+  surface: sealed birch plywood with matte lane markings
+  target_friction_coefficient: 0.60-0.75
+start_pose: Robot stands centered in the corridor with feet parallel and inside the
+  marked start box.
+finish_condition: Robot reaches the end box while all stance contacts remain inside
+  the stepping corridor.
+contact_policy:
+  handrail_allowed: false
+  external_support_allowed: false
+  non_foot_ground_contacts_allowed: false
+variants:
+  canonical:
+    description: Fixed 220 mm corridor.
+  parametric:
+    description: Corridor width may vary between 200 and 240 mm while remaining constant
+      for a run.
+  challenge:
+    description: Lane markings are skewed 5° ± 0.5° from centerline across full length; actual corridor centerline is unchanged.
+      misleading perspective cues.
+scoring_notes: Foot placement error is measured from the marked corridor centerline.
+bom_rows:
+- - item
+  - quantity
+  - spec
+- - surface_panel
+  - '2'
+  - 1500x600x18 mm birch plywood
+- - corridor_marking
+  - 1 roll
+  - 12 mm matte black vinyl tape
+- - support_frame
+  - '2'
+  - 6060 aluminum extrusion, 1500 mm
+assembly_steps:
+- Build the flat lane as in T1.
+- Mark the 220 mm stepping corridor relative to lane centerline with tolerance under
+  2 mm.
+- Verify the start and finish boxes are centered on the corridor.

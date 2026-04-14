@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "terra-benchmark"
+version = "2.0.0"
+description = "TERRA — Terrain-Engaged Robot Reasoning Assessment: a reproducible physical benchmark for closed-loop sensorimotor intelligence in mobile robots."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "PyYAML>=6.0",
+  "jsonschema>=4.0",
+  "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+  "jsonschema>=4.0",
+  "PyYAML>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-org/terra-benchmark"
+Documentation = "https://github.com/your-org/terra-benchmark/tree/main/docs"
+"Issue Tracker" = "https://github.com/your-org/terra-benchmark/issues"
+
+[tool.setuptools]
+packages = ["benchmark"]
+

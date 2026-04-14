@@ -1,0 +1,73 @@
+name: Validate TERRA Submission
+
+on:
+  pull_request:
+    paths:
+      - 'leaderboard/entries/**'
+      - 'baselines/**'
+      - 'tasks/**/task_spec.yaml'
+
+jobs:
+  validate:
+    name: Schema & Score Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -e ".[dev]"
+
+      - name: Validate changed leaderboard entries
+        run: |
+          set -e
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
+            | grep '^leaderboard/entries/.*\.json$' || true)
+          if [ -z "$CHANGED" ]; then
+            echo "No leaderboard entry files changed — skipping entry validation."
+          else
+            echo "Validating changed entries:"
+            for f in $CHANGED; do
+              echo "  → $f"
+              python3 -m benchmark.score validate "$f"
+            done
+          fi
+
+      - name: Validate changed task specs
+        run: |
+          set -e
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
+            | grep 'task_spec\.yaml$' || true)
+          if [ -z "$CHANGED" ]; then
+            echo "No task_spec.yaml files changed — skipping task spec validation."
+          else
+            echo "Validating changed task specs:"
+            for f in $CHANGED; do
+              echo "  → $f"
+              python3 -m benchmark.score validate "$f"
+            done
+          fi
+
+      - name: Validate baseline bundles (if changed)
+        run: |
+          set -e
+          CHANGED_BASELINES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
+            | grep '^baselines/' | awk -F/ '{print $1"/"$2}' | sort -u || true)
+          if [ -z "$CHANGED_BASELINES" ]; then
+            echo "No baseline files changed — skipping baseline validation."
+          else
+            for d in $CHANGED_BASELINES; do
+              echo "Validating baseline bundle: $d"
+              python3 -m benchmark.score validate "$d"
+            done
+          fi
+
+      - name: Post validation summary
+        if: always()
+        run: echo "Validation complete. See logs above for details."

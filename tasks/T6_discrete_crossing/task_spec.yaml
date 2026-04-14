@@ -1,0 +1,58 @@
+task_id: T6
+slug: discrete_crossing
+title: Discrete Crossing
+tier: standard
+terra_version: "2.0"
+morphology_tracks: [humanoid, biped, quadruped, wheeled_legged]
+tss_weight: 1.0
+
+purpose: Measure discrete step commitment, stride planning, and landing precision
+  over a single gap.
+dominant_primitive: discrete crossing decision
+dominant_failure_mode: undershoot or unstable landing after a committed crossing
+geometry:
+  approach_length_mm: 600
+  gap_length_mm: 180
+  landing_length_mm: 600
+  walkway_width_mm: 600
+tolerances:
+  dimensional_mm: 2
+  edge_straightness_mm: 1
+materials:
+  surface: plywood approach and landing platforms over rigid frame
+  target_friction_coefficient: 0.60-0.75
+start_pose: Robot stands with toes 300 mm before the gap edge, centered laterally.
+finish_condition: Robot places both feet on the landing platform without contacting
+  the gap interior.
+contact_policy:
+  handrail_allowed: false
+  external_support_allowed: false
+  non_foot_ground_contacts_allowed: false
+variants:
+  canonical:
+    description: Fixed 180 mm gap with rigid edges.
+  parametric:
+    description: Gap length sampled between 160 and 210 mm for each evaluation block.
+  challenge:
+    description: Gap interior walls painted matte black with no visible depth cues; edge geometry and friction unchanged.
+      remains unchanged.
+scoring_notes: The task should penalize edge contacts even when the robot eventually
+  reaches the landing.
+bom_rows:
+- - item
+  - quantity
+  - spec
+- - approach_platform
+  - '1'
+  - 600x600x18 mm plywood
+- - landing_platform
+  - '1'
+  - 600x600x18 mm plywood
+- - frame_members
+  - '4'
+  - 6060 aluminum extrusion, 600 mm
+assembly_steps:
+- Mount the approach and landing platforms on a rigid frame with the specified gap
+  length between them.
+- Measure the gap at both edges and center to ensure parallelism.
+- Mask the interior cavity walls to avoid reflective cues.

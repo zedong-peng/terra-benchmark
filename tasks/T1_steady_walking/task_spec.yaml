@@ -1,0 +1,58 @@
+task_id: T1
+slug: steady_walking
+title: Steady Walking
+tier: standard
+terra_version: "2.0"
+morphology_tracks: [humanoid, biped, quadruped, wheeled_legged]
+tss_weight: 1.0
+
+purpose: Measure nominal gait stability, heading control, and single-leg support on
+  flat terrain.
+dominant_primitive: steady-state locomotion
+dominant_failure_mode: gait collapse or drift under nominal walking
+geometry:
+  walkway_length_mm: 3000
+  walkway_width_mm: 600
+  centerline_tolerance_mm: 120
+tolerances:
+  dimensional_mm: 3
+  flatness_mm_per_m: 2
+materials:
+  surface: sealed birch plywood or matte HDPE
+  target_friction_coefficient: 0.60-0.75
+start_pose: Robot stands with both feet inside the start box, centered on the lane,
+  pelvis yaw aligned to lane centerline.
+finish_condition: Both feet fully cross the finish line without fall, external support,
+  or leaving the lane.
+contact_policy:
+  handrail_allowed: false
+  external_support_allowed: false
+  non_foot_ground_contacts_allowed: false
+variants:
+  canonical:
+    description: Straight flat walkway with no disturbances.
+  parametric:
+    description: Start speed and finish position randomized within marked tolerances.
+  challenge:
+    description: Visual texture change at midpoint shifts floor reflectance by ≥ 30% measured in L*a*b* delta-E; geometry unchanged.
+      geometry.
+scoring_notes: Primary metric is success. Time and drift penalties separate stable
+  from merely successful gait.
+bom_rows:
+- - item
+  - quantity
+  - spec
+- - surface_panel
+  - '2'
+  - 1500x600x18 mm birch plywood
+- - support_frame
+  - '2'
+  - 6060 aluminum extrusion, 1500 mm
+- - alignment_tape
+  - 1 roll
+  - 25 mm matte vinyl tape
+assembly_steps:
+- Join two panels into a continuous 3000 mm lane and verify panel seam step is below
+  1 mm.
+- Apply lane edge and centerline tape using the supplied drawing.
+- Level the frame and verify flatness along the lane with a straightedge.

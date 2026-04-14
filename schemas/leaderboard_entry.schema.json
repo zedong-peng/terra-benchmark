@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TERRA Leaderboard Entry",
+  "description": "Schema for a community leaderboard submission. Submit by adding a JSON file to leaderboard/entries/ via pull request.",
+  "type": "object",
+  "required": [
+    "submission_id",
+    "robot_name",
+    "lab",
+    "morphology",
+    "benchmark_version",
+    "evaluation_date",
+    "build_variant",
+    "task_scores"
+  ],
+  "properties": {
+    "submission_id": {
+      "type": "string",
+      "description": "Unique identifier for this submission. Recommended format: YYYY-MM-robot-lab (e.g. 2025-04-atlas-mit).",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "robot_name": { "type": "string" },
+    "lab": { "type": "string" },
+    "morphology": {
+      "type": "string",
+      "enum": ["humanoid", "biped", "quadruped", "wheeled_legged", "other"]
+    },
+    "benchmark_version": {
+      "type": "string",
+      "description": "TERRA benchmark version used for this submission (e.g. '2.0')."
+    },
+    "evaluation_date": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date of evaluation block (e.g. '2025-04-01')."
+    },
+    "build_variant": {
+      "type": "string",
+      "enum": ["canonical", "parametric", "challenge"]
+    },
+    "task_scores": {
+      "type": "object",
+      "description": "Per-task TaskScore values for each task run. Keys are task IDs (T1–T8).",
+      "properties": {
+        "T1": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "T2": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "T3": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "T4": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "T5": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "T6": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "T7": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "T8": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "tss": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "TERRA Standard Score: (T1 + T2 + T3 + T4 + 2×T5 + T6 + T7 + 2×T8) / 10. Auto-computed on merge if omitted."
+    },
+    "cli": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Closed-Loop Index: (T5 + T8) / (T1 + T3). Requires T1, T3, T5, T8. Auto-computed on merge if omitted."
+    },
+    "paper_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional arXiv or publication URL for the paper reporting these results."
+    },
+    "video_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional URL to video evidence of the evaluation runs."
+    },
+    "measurement_methods": {
+      "type": "object",
+      "description": "Method codes for each metric as defined in docs/measurement-protocol.md.",
+      "additionalProperties": { "type": "string" }
+    },
+    "hardware_cost_usd": {
+      "type": "number",
+      "description": "Optional estimated apparatus build cost in USD for this submission."
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form notes about this submission (equipment, conditions, deviations from protocol)."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,86 @@
+% TERRA Results Table Template
+% Use this template in your ICRA/CoRL/RSS paper to report TERRA evaluation results.
+% Paste this block into your paper and fill in the numeric cells.
+%
+% Required disclosures: see docs/paper-template/required_disclosures.md
+% Cite as: see CITATION.cff or the \bibitem below.
+
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{siunitx}
+
+% ------------------------------------------------------------------
+% Minimal citation entry (copy into your .bib file or bibliography)
+% ------------------------------------------------------------------
+% @misc{terra2025,
+%   title        = {{TERRA}: Terrain-Engaged Robot Reasoning Assessment},
+%   author       = {{TERRA Benchmark Contributors}},
+%   year         = {2025},
+%   howpublished = {\url{https://github.com/your-org/terra-benchmark}},
+%   note         = {Benchmark version 2.0}
+% }
+
+% ------------------------------------------------------------------
+% Table 1 — Per-task scores and suite-level metrics
+% ------------------------------------------------------------------
+\begin{table}[t]
+  \centering
+  \caption{%
+    TERRA v2.0 evaluation results for \textsc{YourRobotName}
+    (morphology: humanoid; build variant: canonical).
+    TaskScore $\in [0,1]$; higher is better.
+    TSS = TERRA Standard Score $= (T1 + T2 + T3 + T4 + 2{\times}T5 + T6 + T7 + 2{\times}T8)/10$.
+    CLI = Closed-Loop Index $= (T5 + T8)/(T1 + T3)$.
+    Foot placement error (FPE) measured with [overhead camera / pressure plate / MoCap — choose one].
+    $^*$Closed-loop tasks; double-weighted in TSS.
+  }
+  \label{tab:terra_results}
+  \footnotesize
+  \begin{tabular}{@{}llccccc@{}}
+    \toprule
+    \textbf{Task} & \textbf{Title} & \textbf{Success} & \textbf{Time (s)} &
+    \textbf{FPE (mm)} & \textbf{Energy} & \textbf{TaskScore} \\
+    \midrule
+    T1 & Steady Walking        & \num{0.00} & \num{0.0} & \num{0.0} & \num{0.00} & \num{0.0000} \\
+    T2 & Narrow Placement      & \num{0.00} & \num{0.0} & \num{0.0} & \num{0.00} & \num{0.0000} \\
+    T3 & Standard Ascent       & \num{0.00} & \num{0.0} & \num{0.0} & \num{0.00} & \num{0.0000} \\
+    T4 & Standard Descent      & \num{0.00} & \num{0.0} & \num{0.0} & \num{0.00} & \num{0.0000} \\
+    T5$^*$ & Height Anomaly    & \num{0.00} & \num{0.0} & \num{0.0} & \num{0.00} & \num{0.0000} \\
+    T6 & Discrete Crossing     & \num{0.00} & \num{0.0} & \num{0.0} & \num{0.00} & \num{0.0000} \\
+    T7 & Repeated Obstacles    & \num{0.00} & \num{0.0} & \num{0.0} & \num{0.00} & \num{0.0000} \\
+    T8$^*$ & Mild Recovery     & \num{0.00} & \num{0.0} & \num{0.0} & \num{0.00} & \num{0.0000} \\
+    \midrule
+    \multicolumn{6}{l}{\textbf{TSS} (TERRA Standard Score)}  & \num{0.0000} \\
+    \multicolumn{6}{l}{\textbf{CLI} (Closed-Loop Index)}     & \num{0.0000} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ------------------------------------------------------------------
+% Table 2 (optional) — Comparison with TERRA reference baselines
+% ------------------------------------------------------------------
+\begin{table}[t]
+  \centering
+  \caption{%
+    Comparison of \textsc{YourRobotName} against TERRA v2.0 reference baselines on the full 8-task suite.
+    All results use canonical build variant.
+    Sim = MuJoCo reference policy (AtlasSim-LocoPolicy);
+    Real = Unitree H1 reference policy (H1-LabBaseline).
+  }
+  \label{tab:terra_comparison}
+  \footnotesize
+  \begin{tabular}{@{}lcccccccccc@{}}
+    \toprule
+    \multirow{2}{*}{\textbf{System}} &
+    \multicolumn{8}{c}{\textbf{TaskScore per task}} &
+    \multirow{2}{*}{\textbf{TSS}} &
+    \multirow{2}{*}{\textbf{CLI}} \\
+    \cmidrule(lr){2-9}
+    & T1 & T2 & T3 & T4 & T5$^*$ & T6 & T7 & T8$^*$ & & \\
+    \midrule
+    Sim reference   & .978 & .927 & .878 & .805 & .520 & .745 & .692 & .477 & .702 & .537 \\
+    Real reference  & .956 & .872 & .858 & .771 & .707 & .771 & .736 & .680 & .774 & .765 \\
+    \textbf{Ours}   & .000 & .000 & .000 & .000 & .000 & .000 & .000 & .000 & .000 & .000 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

@@ -1,0 +1,26 @@
+{
+  "task_id": "T8",
+  "task_title": "Mild Recovery",
+  "robot_name": "H1-LabBaseline",
+  "morphology_track": "humanoid",
+  "build_variant": "canonical",
+  "trial_dir": "baselines/real_robot_baseline/T8_mild_recovery",
+  "metrics": {
+    "success": 0.76,
+    "completion_time_s": 10.4,
+    "extra_support_contacts": 1,
+    "recovery_steps": 2,
+    "foot_placement_error_mm": 31,
+    "energy_proxy": 0.68
+  },
+  "scoring_coefficients": {
+    "alpha": 0.15,
+    "beta": 0.1,
+    "gamma": 0.05
+  },
+  "task_score": 0.6803,
+  "notes": [
+    "Aggregate score is for summary use only; leaderboard views should preserve raw metrics.",
+    "Recovery steps and continued forward progress are the main signal; this task intentionally separates recoverable faults from terminal failures."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "task_id": "T2",
+  "task_title": "Narrow Placement",
+  "robot_name": "AtlasSim-LocoPolicy",
+  "morphology_track": "humanoid",
+  "build_variant": "canonical",
+  "trial_dir": "baselines/sim_baseline/T2_narrow_placement",
+  "metrics": {
+    "success": 0.95,
+    "completion_time_s": 7.1,
+    "extra_support_contacts": 0,
+    "recovery_steps": 0,
+    "foot_placement_error_mm": 24,
+    "energy_proxy": 0.48
+  },
+  "scoring_coefficients": {
+    "alpha": 0.15,
+    "beta": 0.1,
+    "gamma": 0.05
+  },
+  "task_score": 0.9272,
+  "notes": [
+    "Aggregate score is for summary use only; leaderboard views should preserve raw metrics.",
+    "Foot placement error is measured from the marked corridor centerline."
+  ]
+}

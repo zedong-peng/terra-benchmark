@@ -1,0 +1,26 @@
+{
+  "task_id": "T8",
+  "task_title": "Mild Recovery",
+  "robot_name": "AtlasSim-LocoPolicy",
+  "morphology_track": "humanoid",
+  "build_variant": "canonical",
+  "trial_dir": "baselines/sim_baseline/T8_mild_recovery",
+  "metrics": {
+    "success": 0.58,
+    "completion_time_s": 8.9,
+    "extra_support_contacts": 2,
+    "recovery_steps": 4,
+    "foot_placement_error_mm": 38,
+    "energy_proxy": 0.72
+  },
+  "scoring_coefficients": {
+    "alpha": 0.15,
+    "beta": 0.1,
+    "gamma": 0.05
+  },
+  "task_score": 0.477,
+  "notes": [
+    "Aggregate score is for summary use only; leaderboard views should preserve raw metrics.",
+    "Recovery steps and continued forward progress are the main signal; this task intentionally separates recoverable faults from terminal failures."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "robot": {
+    "name": "AtlasSim-LocoPolicy",
+    "morphology": "humanoid",
+    "height_m": 1.45,
+    "mass_kg": 56.0,
+    "sensors": [
+      "rgbd_head_camera",
+      "imu",
+      "joint_encoders",
+      "foot_contact"
+    ],
+    "controller_frequency_hz": 200,
+    "compute": "1x workstation GPU for policy inference"
+  },
+  "benchmark_version": "0.1.0",
+  "notes": "Illustrative baseline with strong nominal locomotion but weaker recovery under mismatched geometry."
+}

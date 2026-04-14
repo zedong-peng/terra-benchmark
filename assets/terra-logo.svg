@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" width="480" height="120">
+  <defs>
+    <linearGradient id="terraBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d0d1a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e8a838;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0c060;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="480" height="120" rx="8" fill="url(#terraBg)" />
+
+  <!-- Staircase icon: 4 ascending steps -->
+  <g transform="translate(18, 30)">
+    <!-- Step 1 (lowest) -->
+    <rect x="0"  y="54" width="16" height="6"  rx="1" fill="url(#accentGrad)" />
+    <rect x="0"  y="42" width="6"  height="18" rx="1" fill="#c0853a" />
+    <!-- Step 2 -->
+    <rect x="16" y="42" width="16" height="6"  rx="1" fill="url(#accentGrad)" />
+    <rect x="16" y="24" width="6"  height="24" rx="1" fill="#c0853a" />
+    <!-- Step 3 -->
+    <rect x="32" y="24" width="16" height="6"  rx="1" fill="url(#accentGrad)" />
+    <rect x="32" y="6"  width="6"  height="24" rx="1" fill="#c0853a" />
+    <!-- Step 4 (highlighted — anomaly riser, taller) -->
+    <rect x="48" y="6"  width="16" height="6"  rx="1" fill="#f5d060" />
+    <rect x="48" y="0"  width="6"  height="12" rx="1" fill="#e8a838" />
+    <!-- anomaly indicator: small dot on anomaly riser -->
+    <circle cx="74" cy="10" r="4" fill="#f0c060" opacity="0.9" />
+    <!-- walking figure outline -->
+    <circle cx="74" cy="0"  r="5"  fill="none" stroke="#e8e8e8" stroke-width="1.5" />
+    <line   x1="74" y1="5"  x2="74" y2="18" stroke="#e8e8e8" stroke-width="1.5" />
+    <line   x1="74" y1="10" x2="68" y2="16" stroke="#e8e8e8" stroke-width="1.5" />
+    <line   x1="74" y1="10" x2="80" y2="15" stroke="#e8e8e8" stroke-width="1.5" />
+    <line   x1="74" y1="18" x2="69" y2="26" stroke="#e8e8e8" stroke-width="1.5" />
+    <line   x1="74" y1="18" x2="79" y2="26" stroke="#e8e8e8" stroke-width="1.5" />
+  </g>
+
+  <!-- TERRA wordmark -->
+  <text x="132" y="68"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="800"
+        font-size="54"
+        letter-spacing="4"
+        fill="url(#accentGrad)">TERRA</text>
+
+  <!-- Tagline -->
+  <text x="134" y="90"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="400"
+        font-size="12"
+        letter-spacing="1.5"
+        fill="#aaaacc">TERRAIN-ENGAGED ROBOT REASONING ASSESSMENT</text>
+
+  <!-- Version badge -->
+  <rect x="406" y="22" width="54" height="20" rx="4" fill="#e8a838" opacity="0.15" />
+  <text x="433" y="36"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="600"
+        font-size="11"
+        text-anchor="middle"
+        fill="#e8a838">v 2.0</text>
+</svg>

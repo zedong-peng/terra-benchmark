@@ -1,0 +1,26 @@
+{
+  "task_id": "T4",
+  "task_title": "Standard Descent",
+  "robot_name": "H1-LabBaseline",
+  "morphology_track": "humanoid",
+  "build_variant": "canonical",
+  "trial_dir": "baselines/real_robot_baseline/T4_standard_descent",
+  "metrics": {
+    "success": 0.86,
+    "completion_time_s": 15.0,
+    "extra_support_contacts": 1,
+    "recovery_steps": 2,
+    "foot_placement_error_mm": 27,
+    "energy_proxy": 0.66
+  },
+  "scoring_coefficients": {
+    "alpha": 0.15,
+    "beta": 0.1,
+    "gamma": 0.05
+  },
+  "task_score": 0.7707,
+  "notes": [
+    "Aggregate score is for summary use only; leaderboard views should preserve raw metrics.",
+    "Recovery steps and support contacts expose uncertainty handling on descent."
+  ]
+}

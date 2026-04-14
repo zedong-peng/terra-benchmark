@@ -1,0 +1,58 @@
+task_id: T3
+slug: standard_ascent
+title: Standard Ascent
+tier: standard
+terra_version: "2.0"
+morphology_tracks: [humanoid, biped, quadruped]
+tss_weight: 1.0
+
+purpose: Measure terrain height estimation, swing clearance, and upward load transfer
+  during stair ascent.
+dominant_primitive: up-step estimation and ascent
+dominant_failure_mode: toe clip or unstable weight transfer on stairs
+geometry:
+  stair_count: 10
+  riser_height_mm: 170
+  tread_depth_mm: 280
+  clear_width_mm: 900
+  top_landing_mm: 800
+tolerances:
+  dimensional_mm: 2
+  riser_uniformity_mm: 1
+materials:
+  surface: painted plywood treads with anti-slip coating
+  target_friction_coefficient: 0.65-0.80
+start_pose: Robot starts 500 mm before the first riser facing the staircase centerline.
+finish_condition: Both feet stably occupy the top landing after climbing all 10 steps.
+contact_policy:
+  handrail_allowed: false
+  external_support_allowed: false
+  non_foot_ground_contacts_allowed: false
+variants:
+  canonical:
+    description: Uniform 10-step staircase with matte, high-contrast nosing.
+  parametric:
+    description: Nosing color and ambient light vary while geometry remains fixed.
+  challenge:
+    description: Tread nosing painted to reduce contrast ratio to ≤ 2:1 (luminance) vs. tread surface; geometry and friction unchanged.
+      changing geometry.
+scoring_notes: Swing-foot clearance and completion time distinguish conservative from
+  confident ascent behavior.
+bom_rows:
+- - item
+  - quantity
+  - spec
+- - stair_modules
+  - '10'
+  - 900x280x170 mm modular plywood stair boxes
+- - landing_panel
+  - '1'
+  - 900x800x18 mm birch plywood
+- - anti_slip_coating
+  - '1'
+  - clear polyurethane with grit additive
+assembly_steps:
+- Assemble modular stair boxes on a rigid frame and verify each riser is within 1
+  mm of target height.
+- Apply high-contrast nosing tape to each tread edge.
+- Confirm top landing is level with the tenth tread and free of lip discontinuities.

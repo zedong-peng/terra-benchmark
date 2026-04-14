@@ -1,0 +1,62 @@
+task_id: T8
+slug: mild_recovery
+title: Mild Recovery
+tier: standard
+terra_version: "2.0"
+morphology_tracks: [humanoid, biped, quadruped]
+tss_weight: 2.0
+
+purpose: Measure whether a robot can recover and continue after a small, controlled
+  disturbance.
+dominant_primitive: recovery after disturbance
+dominant_failure_mode: inability to resume gait after slip or toe-clearance mismatch
+geometry:
+  walkway_length_mm: 3000
+  walkway_width_mm: 600
+  disturbance_zone_length_mm: 300
+  hidden_mismatch_height_mm: 15
+tolerances:
+  dimensional_mm: 2
+  disturbance_zone_mm: 2
+materials:
+  surface: flat lane with one interchangeable disturbance insert
+  target_friction_coefficient: 0.25-0.35 in slip patch mode or nominal 0.60-0.75 in
+    mismatch mode
+start_pose: Robot starts centered in lane and is not informed which disturbance insert
+  is active.
+finish_condition: Robot reaches the finish line after encountering the disturbance
+  and resumes forward motion.
+contact_policy:
+  handrail_allowed: false
+  external_support_allowed: false
+  non_foot_ground_contacts_allowed: false
+variants:
+  canonical:
+    description: One 15 mm hidden toe-clearance mismatch insert in a nominal walkway.
+  parametric:
+    description: Either a 10-20 mm mismatch insert or a 300 mm low-friction patch
+      is used and logged after the run.
+  challenge:
+    description: Disturbance insert is flush with nominal floor on all visible surfaces; only the sub-surface height mismatch (10–20 mm) or friction change (μ ≤ 0.35) differs. Insert location randomised within ±400 mm of midpoint.
+      matches the nominal floor.
+scoring_notes: Recovery steps and continued forward progress are the main signal;
+  this task intentionally separates recoverable faults from terminal failures.
+bom_rows:
+- - item
+  - quantity
+  - spec
+- - surface_panel
+  - '2'
+  - 1500x600x18 mm birch plywood
+- - disturbance_insert
+  - '1'
+  - 300x600 mm swap-in panel with 15 mm mismatch or low-friction surface
+- - support_frame
+  - '2'
+  - 6060 aluminum extrusion, 1500 mm
+assembly_steps:
+- Assemble the nominal lane as in T1 with a swap-in section centered near the midpoint.
+- Install either the hidden mismatch insert or the low-friction insert before each
+  block.
+- Ensure the insert perimeter is flush enough that only the intended disturbance is
+  present.

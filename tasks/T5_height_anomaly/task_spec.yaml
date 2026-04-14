@@ -1,0 +1,62 @@
+task_id: T5
+slug: height_anomaly
+title: Height Anomaly
+tier: standard
+terra_version: "2.0"
+morphology_tracks: [humanoid, biped, quadruped]
+tss_weight: 2.0
+
+purpose: Measure online correction when one stair violates the learned cadence of
+  an otherwise regular staircase.
+dominant_primitive: geometry mismatch correction
+dominant_failure_mode: failure to update swing height after expectation violation
+geometry:
+  stair_count: 10
+  nominal_riser_height_mm: 170
+  anomalous_riser_height_mm: 210
+  tread_depth_mm: 280
+  clear_width_mm: 900
+  anomaly_step_index: 6
+tolerances:
+  dimensional_mm: 2
+  anomaly_height_mm: 2
+materials:
+  surface: painted plywood treads with anti-slip coating
+  target_friction_coefficient: 0.65-0.80
+start_pose: Robot starts 500 mm before the first riser and is not informed which step
+  is anomalous.
+finish_condition: Robot reaches the top landing while correctly traversing the anomaly
+  and continuing without fall.
+contact_policy:
+  handrail_allowed: false
+  external_support_allowed: false
+  non_foot_ground_contacts_allowed: false
+variants:
+  canonical:
+    description: Step 6 uses a 210 mm riser while all others remain 170 mm.
+  parametric:
+    description: Exactly one riser is sampled in the 190-230 mm range and its index
+      is hidden from the controller.
+  challenge:
+    description: Anomalous nosing painted to match adjacent treads (contrast ratio ≤ 1.5:1); anomaly still present at full 210 mm height.
+scoring_notes: This is the signature closed-loop task. Reward successful continuation,
+  not just perfect nominal cadence.
+bom_rows:
+- - item
+  - quantity
+  - spec
+- - stair_modules
+  - '9'
+  - 900x280x170 mm modular plywood stair boxes
+- - anomaly_module
+  - '1'
+  - 900x280x210 mm modular plywood stair box
+- - landing_panel
+  - '1'
+  - 900x800x18 mm birch plywood
+assembly_steps:
+- Build the staircase as in T3, but replace the sixth module with the anomalous riser
+  module.
+- Verify that only one riser differs from the nominal geometry.
+- For parametric mode, move or replace the anomaly before the evaluation block and
+  log the final ground truth separately.

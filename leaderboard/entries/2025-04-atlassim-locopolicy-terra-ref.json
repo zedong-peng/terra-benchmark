@@ -1,0 +1,34 @@
+{
+  "submission_id": "2025-04-atlassim-locopolicy-terra-ref",
+  "robot_name": "AtlasSim-LocoPolicy",
+  "lab": "TERRA Reference Implementation",
+  "morphology": "humanoid",
+  "benchmark_version": "2.0",
+  "evaluation_date": "2025-04-01",
+  "build_variant": "canonical",
+  "task_scores": {
+    "T1": 0.978,
+    "T2": 0.9272,
+    "T3": 0.878,
+    "T4": 0.8051,
+    "T5": 0.5196,
+    "T6": 0.7447,
+    "T7": 0.6924,
+    "T8": 0.477
+  },
+  "tss": 0.7019,
+  "cli": 0.537,
+  "measurement_methods": {
+    "success": "robot_proprioception",
+    "completion_time_s": "robot_proprioception",
+    "extra_support_contacts": "robot_proprioception",
+    "recovery_steps": "robot_proprioception",
+    "foot_placement_error_mm": "robot_proprioception",
+    "energy_proxy": "robot_proprioception"
+  },
+  "notes": [
+    "Reference simulation evaluation for TERRA v2.0 release. MuJoCo physics, 200 Hz control.",
+    "All metrics logged directly from simulator ground-truth state.",
+    "Illustrates nominal-task strength (T1-T4) vs. closed-loop degradation (T5, T8): CLI = 0.537."
+  ]
+}

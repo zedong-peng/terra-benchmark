@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["task_id", "task_title", "robot_name", "trial_dir", "metrics", "scoring_coefficients", "task_score", "notes"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "task_title": { "type": "string" },
+    "robot_name": { "type": "string" },
+    "morphology_track": {
+      "type": "string",
+      "enum": ["humanoid", "biped", "quadruped", "wheeled_legged", "other"],
+      "description": "Robot morphology track. Leaderboard results are grouped by this field."
+    },
+    "trial_dir": { "type": "string" },
+    "build_variant": {
+      "type": "string",
+      "enum": ["canonical", "parametric", "challenge"],
+      "description": "Which task variant was used for this evaluation."
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "success",
+        "completion_time_s",
+        "extra_support_contacts",
+        "recovery_steps",
+        "foot_placement_error_mm",
+        "energy_proxy"
+      ],
+      "properties": {
+        "success": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "completion_time_s": { "type": "number", "minimum": 0.0 },
+        "extra_support_contacts": { "type": "integer", "minimum": 0 },
+        "recovery_steps": { "type": "integer", "minimum": 0 },
+        "foot_placement_error_mm": { "type": "number", "minimum": -1.0 },
+        "energy_proxy": { "type": "number", "minimum": -1.0, "maximum": 1.0 }
+      },
+      "additionalProperties": false
+    },
+    "scoring_coefficients": {
+      "type": "object",
+      "required": ["alpha", "beta", "gamma"],
+      "properties": {
+        "alpha": { "type": "number" },
+        "beta": { "type": "number" },
+        "gamma": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "task_score": { "type": "number", "minimum": 0.0 },
+    "tss_contribution": {
+      "type": "number",
+      "description": "This task's weighted contribution to the TERRA Standard Score (task_score × tss_weight)."
+    },
+    "cli": {
+      "type": "number",
+      "description": "Closed-Loop Index for this submission (set only on suite-level score reports, not per-task reports)."
+    },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

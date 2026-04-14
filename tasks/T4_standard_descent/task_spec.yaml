@@ -1,0 +1,59 @@
+task_id: T4
+slug: standard_descent
+title: Standard Descent
+tier: standard
+terra_version: "2.0"
+morphology_tracks: [humanoid, biped, quadruped]
+tss_weight: 1.0
+
+purpose: Measure probing, center-of-mass control, and uncertainty handling during
+  stair descent.
+dominant_primitive: down-step control
+dominant_failure_mode: over-commitment before support is confirmed on lower step
+geometry:
+  stair_count: 10
+  riser_height_mm: 170
+  tread_depth_mm: 280
+  clear_width_mm: 900
+  bottom_landing_mm: 800
+tolerances:
+  dimensional_mm: 2
+  riser_uniformity_mm: 1
+materials:
+  surface: painted plywood treads with anti-slip coating
+  target_friction_coefficient: 0.65-0.80
+start_pose: Robot starts on the top landing with both feet fully supported and pelvis
+  aligned to stair centerline.
+finish_condition: Robot reaches the bottom landing with both feet stably supported
+  and no fall.
+contact_policy:
+  handrail_allowed: false
+  external_support_allowed: false
+  non_foot_ground_contacts_allowed: false
+variants:
+  canonical:
+    description: Uniform 10-step staircase descending to a flat landing.
+  parametric:
+    description: Ambient light and tread texture vary while geometry remains fixed.
+  challenge:
+    description: One tread edge has contrast ratio reduced to ≤ 1.5:1; location drawn randomly before each evaluation block and logged.
+      correction.
+scoring_notes: Recovery steps and support contacts expose uncertainty handling on
+  descent.
+bom_rows:
+- - item
+  - quantity
+  - spec
+- - stair_modules
+  - '10'
+  - 900x280x170 mm modular plywood stair boxes
+- - landing_panel
+  - '1'
+  - 900x800x18 mm birch plywood
+- - anti_slip_coating
+  - '1'
+  - clear polyurethane with grit additive
+assembly_steps:
+- Reuse the T3 staircase geometry and verify descent is run in the opposite direction.
+- Ensure bottom landing is flush with the final riser.
+- Inspect all stair nosings before each evaluation block.

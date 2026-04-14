@@ -1,0 +1,26 @@
+{
+  "task_id": "T7",
+  "task_title": "Repeated Obstacles",
+  "robot_name": "AtlasSim-LocoPolicy",
+  "morphology_track": "humanoid",
+  "build_variant": "canonical",
+  "trial_dir": "baselines/sim_baseline/T7_repeated_obstacles",
+  "metrics": {
+    "success": 0.77,
+    "completion_time_s": 9.4,
+    "extra_support_contacts": 1,
+    "recovery_steps": 2,
+    "foot_placement_error_mm": 29,
+    "energy_proxy": 0.6
+  },
+  "scoring_coefficients": {
+    "alpha": 0.15,
+    "beta": 0.1,
+    "gamma": 0.05
+  },
+  "task_score": 0.6924,
+  "notes": [
+    "Aggregate score is for summary use only; leaderboard views should preserve raw metrics.",
+    "Repeated small contacts matter here; a single clip should not be treated the same as a fall, but it must be visible in scoring."
+  ]
+}

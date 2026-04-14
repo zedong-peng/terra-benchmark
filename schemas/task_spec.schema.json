@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "task_id",
+    "slug",
+    "title",
+    "purpose",
+    "dominant_primitive",
+    "dominant_failure_mode",
+    "geometry",
+    "tolerances",
+    "materials",
+    "start_pose",
+    "finish_condition",
+    "contact_policy",
+    "variants",
+    "scoring_notes",
+    "bom_rows",
+    "assembly_steps"
+  ],
+  "properties": {
+    "task_id": { "type": "string" },
+    "slug": { "type": "string" },
+    "title": { "type": "string" },
+    "terra_version": {
+      "type": "string",
+      "description": "TERRA benchmark version this task spec targets (e.g. '2.0')."
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["foundation", "standard", "challenge"],
+      "description": "Task difficulty tier. foundation = entry-level, standard = canonical 8 tasks, challenge = advanced."
+    },
+    "morphology_tracks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["humanoid", "biped", "quadruped", "wheeled_legged", "other"]
+      },
+      "description": "Robot morphologies for which this task is valid and meaningful.",
+      "minItems": 1
+    },
+    "purpose": { "type": "string" },
+    "dominant_primitive": { "type": "string" },
+    "dominant_failure_mode": { "type": "string" },
+    "geometry": { "type": "object" },
+    "tolerances": { "type": "object" },
+    "materials": { "type": "object" },
+    "start_pose": { "type": "string" },
+    "finish_condition": { "type": "string" },
+    "contact_policy": { "type": "object" },
+    "variants": {
+      "type": "object",
+      "required": ["canonical", "parametric", "challenge"]
+    },
+    "scoring_notes": { "type": "string" },
+    "tss_weight": {
+      "type": "number",
+      "description": "Weight of this task in the TERRA Standard Score. Default 1.0; closed-loop tasks (T5, T8) use 2.0."
+    },
+    "bom_rows": { "type": "array" },
+    "assembly_steps": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

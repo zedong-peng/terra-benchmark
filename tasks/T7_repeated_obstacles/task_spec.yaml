@@ -1,0 +1,62 @@
+task_id: T7
+slug: repeated_obstacles
+title: Repeated Obstacles
+tier: standard
+terra_version: "2.0"
+morphology_tracks: [humanoid, biped, quadruped]
+tss_weight: 1.0
+
+purpose: Measure repeated swing-foot clearance and short-horizon adaptation across
+  several low obstacles.
+dominant_primitive: sequential adaptation
+dominant_failure_mode: accumulated toe clips or timing drift across obstacle sequence
+geometry:
+  walkway_length_mm: 3000
+  walkway_width_mm: 600
+  obstacle_count: 5
+  obstacle_height_mm: 40
+  obstacle_thickness_mm: 20
+  obstacle_spacing_mm: 350
+tolerances:
+  dimensional_mm: 2
+  spacing_mm: 3
+materials:
+  surface: flat plywood lane with removable HDPE or wood obstacle bars
+  target_friction_coefficient: 0.60-0.75
+start_pose: Robot starts 400 mm before the first obstacle with stance centered on
+  the lane.
+finish_condition: Robot traverses the full obstacle series and crosses the finish
+  line without fall.
+contact_policy:
+  handrail_allowed: false
+  external_support_allowed: false
+  non_foot_ground_contacts_allowed: false
+variants:
+  canonical:
+    description: Five 40 mm obstacles spaced at 350 mm.
+  parametric:
+    description: Obstacle spacing varies between 320 and 380 mm while keeping count
+      fixed.
+  challenge:
+    description: One obstacle (index drawn randomly per block) painted to match floor within 5 delta-E; all obstacles remain at nominal 40 mm height.
+      adaptation under weaker visual segmentation.
+scoring_notes: Repeated small contacts matter here; a single clip should not be treated
+  the same as a fall, but it must be visible in scoring.
+bom_rows:
+- - item
+  - quantity
+  - spec
+- - surface_panel
+  - '2'
+  - 1500x600x18 mm birch plywood
+- - obstacle_bars
+  - '5'
+  - 600x20x40 mm HDPE or hardwood bars
+- - mounting_guides
+  - '10'
+  - low-profile guides for repeatable obstacle placement
+assembly_steps:
+- Assemble the flat lane as in T1.
+- Install placement guides so each obstacle can be repositioned repeatably.
+- Place five bars at the prescribed spacing measured from leading edge to leading
+  edge.

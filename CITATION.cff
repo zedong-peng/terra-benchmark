@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: >
+  If you use TERRA in your research, please cite it using the metadata in this file.
+  Include the benchmark version (terra_version field in your results) in your paper.
+title: "TERRA: Terrain-Engaged Robot Reasoning Assessment"
+abstract: >
+  TERRA is an open, reproducible physical benchmark for evaluating closed-loop
+  sensorimotor intelligence in mobile robots.  Eight standardised tasks probe the
+  ability of autonomous systems to perceive terrain geometry, form predictions, and
+  rapidly correct when those predictions are violated — the core capability gap that
+  current locomotion benchmarks leave unmeasured.  The benchmark provides complete
+  fabrication specifications (CAD, BOM, assembly instructions), a measurement protocol,
+  JSON-schema-validated data formats, and a community leaderboard covering all mobile
+  robot morphologies.
+type: software
+version: "2.0.0"
+date-released: "2025-04-01"
+license: MIT
+repository-code: https://github.com/your-org/terra-benchmark
+keywords:
+  - benchmark
+  - embodied AI
+  - legged robots
+  - locomotion
+  - humanoid robots
+  - quadruped robots
+  - sensorimotor intelligence
+  - closed-loop control
+  - reproducible research
+authors:
+  - name: TERRA Benchmark Contributors
+    alias: terra-contributors
+    website: https://github.com/your-org/terra-benchmark
+
+references:
+  - type: dataset
+    title: "TERRA v2.0 Baseline Results"
+    authors:
+      - name: TERRA Benchmark Contributors
+    url: https://github.com/your-org/terra-benchmark/tree/main/baselines
+    version: "2.0.0"
+    date-released: "2025-04-01"

@@ -1,0 +1,72 @@
+# TERRA Standard Chain
+
+name: TERRA-Standard-Chain
+version: "2.0"
+description: >
+  Canonical 4-task evaluation chain for rapid closed-loop assessment.
+  Running T1 → T3 → T5 → T8 in sequence provides all four tasks required
+  to compute the Closed-Loop Index (CLI) and covers both nominal and
+  expectation-violating terrain.  Estimated wall-clock time: 45–90 minutes
+  including reset and re-calibration between tasks.
+
+tasks:
+  - task_id: T1
+    title: Steady Walking
+    slug: steady_walking
+    role: nominal_baseline
+    rationale: >
+      Establishes the robot's nominal walking capability on flat terrain.
+      T1 score is the CLI denominator component; a robot that fails T1
+      cannot produce a meaningful CLI.
+    setup_notes: >
+      Flat 3000 mm lane.  Verify surface friction 0.60–0.75 before starting.
+      Calibrate overhead camera if foot placement error is being measured.
+    estimated_reset_time_min: 5
+
+  - task_id: T3
+    title: Standard Ascent
+    slug: standard_ascent
+    role: nominal_stair
+    rationale: >
+      Establishes the robot's stair-climbing capability under nominal, uniform
+      geometry.  T3 score is the second CLI denominator component.
+      A strong T3 score followed by a weak T5 score is the signature pattern
+      of open-loop stair policy with no online correction.
+    setup_notes: >
+      Standard 10-step staircase, all risers 170 mm.  Verify riser uniformity
+      with calipers before evaluation block; tolerance ≤ 1 mm.
+    estimated_reset_time_min: 10
+
+  - task_id: T5
+    title: Height Anomaly
+    slug: height_anomaly
+    role: closed_loop_perception
+    rationale: >
+      Replaces step 6 with a 210 mm riser (40 mm above nominal).  Tests
+      whether the robot can detect the expectation violation through vision
+      and/or contact feedback and adjust swing height mid-staircase.
+      T5 is the primary closed-loop signature task.
+    setup_notes: >
+      Swap step-6 module to the 210 mm anomaly module.  Verify anomaly height
+      is 210 ± 2 mm with calipers.  Robot must NOT be informed which step
+      is anomalous.
+    estimated_reset_time_min: 10
+
+  - task_id: T8
+    title: Mild Recovery
+    slug: mild_recovery
+    role: closed_loop_recovery
+    rationale: >
+      Hidden 15 mm mismatch insert in a nominal walkway.  Tests whether the
+      robot can recover forward motion after an unexpected contact disturbance.
+      T8 + T5 together form the CLI numerator; together they distinguish
+      perception-driven correction (T5) from contact-driven recovery (T8).
+    setup_notes: >
+      Install mismatch insert at lane midpoint, flush with nominal surface.
+      Robot must NOT be informed which disturbance type or location is active.
+    estimated_reset_time_min: 8
+
+# Derived metrics from this chain:
+# CLI = (T5 + T8) / (T1 + T3)
+# TSS_partial = (1*T1 + 1*T3 + 2*T5 + 2*T8) / 6  [denominator = available weights]
+# Note: full TSS requires all 8 tasks.
